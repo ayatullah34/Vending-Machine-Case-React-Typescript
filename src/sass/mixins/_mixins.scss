@@ -1,0 +1,13 @@
+@import '../variables/index';
+
+@mixin mobileMax {
+    @media only screen and (max-width: $mobile) {
+        @content
+    }
+};
+
+@mixin mobileMin {
+    @media (max-width: $mobile) {
+        @content
+    }
+}

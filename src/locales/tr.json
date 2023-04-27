@@ -1,0 +1,21 @@
+{
+    "welcome": "Uygulamama hoş geldiniz!",
+    "login": "Giriş yap",
+    "logout": "Çıkış yap",
+    "home": "Ana sayfa",
+    "about": "Hakkımızda",
+    "contact": "Bize ulaşın",
+    "vending_machine": "Otomat",
+    "cola":"Kola",
+    "chips":"Cips",
+    "candy":"Şeker",
+    "popcorn":"Mısır",
+    "water":"Su",
+    "chocolate":"Çikolata",
+    "bread":"Ekmek",
+    "taco":"Taco",
+    "hotdog":"Hotdog",
+    "coffee":"Kahve",
+    "total":"Toplam",
+    "refund":"İade et"
+}

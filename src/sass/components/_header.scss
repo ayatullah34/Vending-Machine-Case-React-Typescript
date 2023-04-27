@@ -1,0 +1,53 @@
+@import '../variables/index';
+
+.header {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    background-color: $main-blue;
+    -webkit-box-shadow: $main-shadow;
+    box-shadow: $main-shadow;
+    padding: 1rem;
+
+    @include mobileMin {
+        padding: 1rem 2rem;
+    }
+
+    &__logo {
+        height: 2rem;
+        margin-right: 1rem;
+    }
+
+    &__title {
+        font-size: 1.5rem;
+        color: $main-white;
+        margin: 0;
+    }
+
+    @include mobileMin {
+        &__title {
+            font-size: 1.8rem;
+        }
+    }
+
+    &__language {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+
+        &-btn {
+            background: none;
+            border: none;
+            margin-right: 1rem;
+            cursor: pointer;
+            padding: 0;
+        }
+    }
+
+    &__language img {
+        height: 1.5rem;
+    }
+}

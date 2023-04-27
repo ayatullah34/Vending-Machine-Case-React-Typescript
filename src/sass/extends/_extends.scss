@@ -1,0 +1,7 @@
+@import '../variables/index';
+
+%items {
+    display: inline-block;
+    border: $item-border;
+    border-radius: 4px;
+}

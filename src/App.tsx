@@ -1,26 +1,18 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { I18nextProvider, useTranslation } from "react-i18next";
+import Header from "./components/Header";
+import i18n from './i18n';
+import VendingMachine from "./components/VendingMachine";
 
 function App() {
+  const { t } = useTranslation(); // i18n çevirilerine erişmek için useTranslation() özelliğini kullanın
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <I18nextProvider i18n={i18n}>
+      <Header title={t("vending_machine")} />
+      <VendingMachine/>
+    </I18nextProvider>
   );
 }
 
 export default App;
+
