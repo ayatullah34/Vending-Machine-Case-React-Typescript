@@ -1,9 +1,12 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Product } from "../interfaces/IProduct";
 import { products } from "../data/products";
 import { coins } from "../data/coins";
 import { toast } from "react-toastify";
+
+const RESET_TIME_IN_MS = 0.1 * 60 * 1000; // 5 dakika
+const MINUTE_IN_MS = 60 * 1000;
 
 const VendingMachine: React.FC = () => {
 	const [productItems, setProductItems] = useState(products);
@@ -12,6 +15,15 @@ const VendingMachine: React.FC = () => {
 	const { t } = useTranslation();
 	const paymentTotal = useMemo(() => calculateTotalPrice(), [selectedProducts]);
 	const disableOrder = useMemo(() => checkDisable(), [coinTotal, paymentTotal, selectedProducts.length]);
+	const [timeLeft, setTimeLeft] = useState<number>(0);
+
+	const formatTime = (timeInMs: number) => {
+		const minutes = Math.floor(timeInMs / MINUTE_IN_MS);
+		const seconds = Math.floor((timeInMs % MINUTE_IN_MS) / 1000);
+		return `${minutes < 10 ? "0" : ""}${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+	};
+
+	console.log("render ");
 
 	//Fraud
 	function checkDisable(): Boolean {
@@ -93,9 +105,38 @@ const VendingMachine: React.FC = () => {
 			});
 		}
 	};
+
+	useEffect(() => {
+		if (selectedProducts.length > 0) {
+			const disableActions = () => {
+				setSelectedProducts([]);
+				setCoinTotal(0);
+				setProductItems((prevItems) =>
+					prevItems.map((item) => ({
+						...item,
+						disabled: false,
+					}))
+				);
+				toast.info(t("user_interaction_end"), {
+					autoClose: 2000,
+				});
+			};
+
+			const interactionInterval = setInterval(() => {
+				disableActions();
+			}, RESET_TIME_IN_MS);
+
+			return () => {
+				clearInterval(interactionInterval);
+			};
+		}
+	}, [selectedProducts]);
+
+
 	return (
 		<div className="app-container">
 			<div className="vending-machine-container">
+				{/* <h1>{interactionTimeLeft}</h1> */}
 				<div className="items">
 					{productItems.map((item) => (
 						<div

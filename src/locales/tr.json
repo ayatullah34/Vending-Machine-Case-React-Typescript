@@ -21,5 +21,7 @@
     "cancel":"İptal",
     "place_order":"Sipariş Ver",
     "order_placed_successfully":"Sipariş Başarıyla Verildi!",
-    "no_items_selected":"Sepetiniz Boş!"
+    "no_items_selected":"Sepetiniz Boş!",
+    "user_interaction_end":"Kullanıcı etkileşimi sona erdi ve otomat sıfırlandı!"
+    
 }

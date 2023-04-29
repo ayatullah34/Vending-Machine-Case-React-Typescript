@@ -22,5 +22,6 @@
     "complete":"Complete",
     "place_order":"Place Order",
     "order_placed_successfully":"Order Placed Successfully!",
-    "no_items_selected":"Your Cart is Empty!"
+    "no_items_selected":"Your Cart is Empty!",
+    "user_interaction_end":"The user interaction has ended and the vending machine has been reset!"
   }
