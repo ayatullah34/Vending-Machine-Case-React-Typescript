@@ -11,7 +11,7 @@
   height: 40%;
 }
 
-.cash-container_div_total, .cash-container_div_action_complete, .cash-container_div_action_cancel {
+.cash-container_div_total, .cash-container_div_total-coin, .cash-container_div_action_complete, .cash-container_div_action_cancel {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -26,6 +26,9 @@
   color: white;
   border-radius: 5px;
   cursor: pointer;
+}
+.cash-container_div_action_complete:hover, .cash-container_div_action_cancel:hover {
+  opacity: 0.6;
 }
 
 .header {
@@ -190,6 +193,18 @@
     padding: 15px;
   }
 }
+.cash-container_div_total-coin {
+  justify-content: space-evenly;
+  padding: 5px;
+  height: 40px;
+  width: 10rem;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  font-weight: 200;
+  background-color: #a8dadc;
+  color: #2a9d8f;
+  margin-bottom: 5px;
+}
 .cash-container_div_total {
   justify-content: space-evenly;
   padding: 5px;
@@ -198,8 +213,9 @@
   border-radius: 5px;
   font-size: 1.1rem;
   font-weight: 200;
-  background-color: #457b9d;
-  color: white;
+  background-color: white;
+  border: 1px solid #404040;
+  color: #404040;
   margin-bottom: 5px;
 }
 .cash-container_div_action {
@@ -215,8 +231,17 @@
   }
 }
 .cash-container_div_action_cancel {
-  background-color: #e63946;
+  background-color: white;
+  color: #e63946;
+  border: 1px solid #e63946;
 }
 .cash-container_div_action_complete {
-  background-color: #2a9d8f;
+  background-color: white;
+  color: #2a9d8f;
+  border: 1px solid #2a9d8f;
+}
+.cash-container_div_action_complete.disabled {
+  background-color: #ccc;
+  opacity: 0.5;
+  cursor: not-allowed;
 }

@@ -24,4 +24,7 @@
     color: $main-white;
     border-radius: 5px;
     cursor: pointer;
+    &:hover{
+        opacity: 0.6;
+    }
 }

@@ -10,10 +10,16 @@ const VendingMachine: React.FC = () => {
 	const [selectedProducts, setSelectedProducts] = useState<Product[]>([]);
 	const [coinTotal, setCoinTotal] = useState<number>(0);
 	const { t } = useTranslation();
-	const paymentTotal = useMemo(() => calculateTotalPrice(), [
-		selectedProducts,
-		coinTotal,
-	]);
+	const paymentTotal = useMemo(() => calculateTotalPrice(), [selectedProducts]);
+	const disableOrder = useMemo(() => checkDisable(), [coinTotal, paymentTotal, selectedProducts.length]);
+
+	//Fraud
+	function checkDisable(): Boolean {
+		if (coinTotal >= paymentTotal && selectedProducts.length > 0) {
+			return false;
+		}
+		return true;
+	}
 
 	const handleProductClick = (item: Product) => {
 		const selectedProductIndex = selectedProducts.findIndex(
@@ -45,8 +51,7 @@ const VendingMachine: React.FC = () => {
 
 	function calculateTotalPrice(): number {
 		return (
-			selectedProducts.reduce((total, product) => total + product.price, 0) +
-			coinTotal
+			selectedProducts.reduce((total, product) => total + product.price, 0)
 		);
 	}
 
@@ -67,28 +72,17 @@ const VendingMachine: React.FC = () => {
 						: product
 				)
 			);
-		}, 1000);
+		}, 10000);
 
 		return () => clearInterval(intervalId);
 	}, []);
 
-	//Fraud
-	useEffect(() => {
-		if (coinTotal > paymentTotal) {
-			setSelectedProducts([]);
-			setCoinTotal(0);
-			setProductItems(products);
-			toast.error(t("fraud_alert"), {
-				position: "bottom-right",
-				autoClose: 2000,
-			});
-		}
-	}, [coinTotal, paymentTotal, products, selectedProducts, t]);
-
 	const handlePaymentClick = () => {
 		const paymentTotal = calculateTotalPrice();
-
-		if (paymentTotal > 0) {
+		if (disableOrder) {
+			return;
+		}
+		if (coinTotal >= paymentTotal) {
 			handleResetClick();
 			toast.success(t("order_placed_successfully"), {
 				autoClose: 2000,
@@ -136,6 +130,9 @@ const VendingMachine: React.FC = () => {
 					))}
 				</div>
 				<div className="cash-container_div">
+					<div className="cash-container_div_total-coin">
+						{`Coin: $${coinTotal}`}
+					</div>
 					<div className="cash-container_div_total">
 						{`${t("total")}: $${paymentTotal}`}
 					</div>
@@ -147,7 +144,7 @@ const VendingMachine: React.FC = () => {
 							{t("cancel")}
 						</div>
 						<div
-							className="cash-container_div_action_complete"
+							className={`cash-container_div_action_complete ${disableOrder ? "disabled" : ""}`}
 							onClick={handlePaymentClick}
 						>
 							{t("place_order")}
