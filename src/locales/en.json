@@ -17,5 +17,10 @@
     "hotdog":"Hotdog",
     "coffee":"Coffee",
     "total":"Total",
-    "refund":"Refund"
+    "refund":"Refund",
+    "cancel":"Cancel",
+    "complete":"Complete",
+    "place_order":"Place Order",
+    "order_placed_successfully":"Order Placed Successfully!",
+    "no_items_selected":"Your Cart is Empty!"
   }

@@ -17,5 +17,9 @@
     "hotdog":"Hotdog",
     "coffee":"Kahve",
     "total":"Toplam",
-    "refund":"İade et"
+    "refund":"İade et",
+    "cancel":"İptal",
+    "place_order":"Sipariş Ver",
+    "order_placed_successfully":"Sipariş Başarıyla Verildi!",
+    "no_items_selected":"Sepetiniz Boş!"
 }

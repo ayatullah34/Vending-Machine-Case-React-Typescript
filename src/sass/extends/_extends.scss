@@ -1,7 +1,27 @@
 @import '../variables/index';
+@import '../mixins/mixins';
 
 %items {
     display: inline-block;
     border: $item-border;
     border-radius: 4px;
+    height: 40%;
+}
+
+%flex-center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+%action-button {
+    @extend %flex-center;
+    height: 40px;
+    width: 10rem;
+    font-size: 1.1rem;
+    font-weight: 200;
+    background-color: $blue40;
+    color: $main-white;
+    border-radius: 5px;
+    cursor: pointer;
 }
