@@ -12,7 +12,9 @@ const products: Product[] = [
 	{ name: "hotdog", price: 40, currency: "$", imgSrc: "hotdog.svg", disabled: false, temperature: 0 },
 	{ name: "coffee", price: 50, currency: "$", imgSrc: "coffee.svg", disabled: false, temperature: 0 }
 ];
+const RESET_TIME_IN_MS = 0.5 * 60 * 1000; // 5 dakika
 
 export {
 	products,
+	RESET_TIME_IN_MS
 }
