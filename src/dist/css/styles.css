@@ -11,7 +11,7 @@
   height: 40%;
 }
 
-.cash-container_div_total, .cash-container_div_total-coin, .cash-container_div_action_complete, .cash-container_div_action_cancel {
+.cash-container_div_total, .cash-container_div_total-coin, .vending-machine-container h1, .cash-container_div_action_complete, .cash-container_div_action_cancel {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -29,6 +29,21 @@
 }
 .cash-container_div_action_complete:hover, .cash-container_div_action_cancel:hover {
   opacity: 0.6;
+}
+
+.vending-machine-container h1.red-label {
+  animation: blink 1s linear infinite;
+}
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .header {
@@ -95,6 +110,20 @@
   height: 35rem;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
 }
+.vending-machine-container h1 {
+  font-size: 28px;
+  font-weight: bold;
+  text-align: center;
+  color: #404040;
+  background-color: white;
+  border: 1px solid #ccc;
+  gap: 10px;
+  padding: 8px;
+  border-radius: 8px;
+}
+.vending-machine-container h1.red-label {
+  color: red;
+}
 @media only screen and (max-width: 768px) {
   .vending-machine-container {
     width: 100%;
@@ -140,7 +169,7 @@
   justify-content: center;
   align-items: center;
   background-color: rgba(255, 255, 255, 0.9);
-  color: #000;
+  color: #404040;
   font-size: 16px;
   font-weight: bold;
 }

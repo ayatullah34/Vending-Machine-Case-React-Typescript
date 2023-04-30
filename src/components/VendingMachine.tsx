@@ -4,6 +4,8 @@ import { Product } from "../interfaces/IProduct";
 import { products } from "../data/products";
 import { coins } from "../data/coins";
 import { toast } from "react-toastify";
+import useTimer from "../hooks/useTimer";
+import { BiTimer } from 'react-icons/bi';
 
 const RESET_TIME_IN_MS = 0.1 * 60 * 1000; // 5 dakika
 const MINUTE_IN_MS = 60 * 1000;
@@ -13,9 +15,15 @@ const VendingMachine: React.FC = () => {
 	const [selectedProducts, setSelectedProducts] = useState<Product[]>([]);
 	const [coinTotal, setCoinTotal] = useState<number>(0);
 	const { t } = useTranslation();
+	const [isAlmostZero, setIsAlmostZero] = useState<boolean>(false);
 	const paymentTotal = useMemo(() => calculateTotalPrice(), [selectedProducts]);
 	const disableOrder = useMemo(() => checkDisable(), [coinTotal, paymentTotal, selectedProducts.length]);
-	const [timeLeft, setTimeLeft] = useState<number>(0);
+	const { timeLeft, startTimer, resetTimer } = useTimer({
+		initialTime: RESET_TIME_IN_MS, // 5 dakika = 300000 milisaniye
+		onTimerEnd: () => {
+			resetTimer();
+		},
+	});
 
 	const formatTime = (timeInMs: number) => {
 		const minutes = Math.floor(timeInMs / MINUTE_IN_MS);
@@ -96,6 +104,7 @@ const VendingMachine: React.FC = () => {
 		}
 		if (coinTotal >= paymentTotal) {
 			handleResetClick();
+			resetTimer();
 			toast.success(t("order_placed_successfully"), {
 				autoClose: 2000,
 			});
@@ -108,6 +117,7 @@ const VendingMachine: React.FC = () => {
 
 	useEffect(() => {
 		if (selectedProducts.length > 0) {
+			startTimer()
 			const disableActions = () => {
 				setSelectedProducts([]);
 				setCoinTotal(0);
@@ -129,14 +139,24 @@ const VendingMachine: React.FC = () => {
 			return () => {
 				clearInterval(interactionInterval);
 			};
+		} else {
+			resetTimer();
 		}
 	}, [selectedProducts]);
 
+	useEffect(() => {
+		if (timeLeft <= 5000) {
+			setIsAlmostZero(true);
+		}
+		if (timeLeft === 0) {
+			setIsAlmostZero(false);
+		}
+	}, [timeLeft]);
 
 	return (
 		<div className="app-container">
 			<div className="vending-machine-container">
-				{/* <h1>{interactionTimeLeft}</h1> */}
+				<h1 className={isAlmostZero ? "red-label" : ""}><BiTimer /> {formatTime(timeLeft)}</h1>
 				<div className="items">
 					{productItems.map((item) => (
 						<div

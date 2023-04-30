@@ -8,7 +8,7 @@
     height: 40%;
 }
 
-%flex-center{
+%flex-center {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -24,7 +24,25 @@
     color: $main-white;
     border-radius: 5px;
     cursor: pointer;
-    &:hover{
+
+    &:hover {
         opacity: 0.6;
+    }
+}
+
+%blink {
+    animation: blink 1s linear infinite;
+    @keyframes blink {
+        0% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
     }
 }

@@ -2,7 +2,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 
 type UseTimerProps = {
     initialTime: number;
-    onTimerEnd?: () => void;
+    onTimerEnd: () => void;
 };
 
 const useTimer = ({ initialTime, onTimerEnd }: UseTimerProps) => {
@@ -11,9 +11,11 @@ const useTimer = ({ initialTime, onTimerEnd }: UseTimerProps) => {
 
     const startTimer = useCallback(() => {
         if (timeLeft > 0) {
-            intervalRef.current = setInterval(() => {
-                setTimeLeft((time) => time - 1000);
-            }, 1000);
+            if (intervalRef.current === null) {
+                intervalRef.current = setInterval(() => {
+                    setTimeLeft((time) => time - 1000);
+                }, 1000);
+            }
         }
     }, [timeLeft]);
 
@@ -28,11 +30,9 @@ const useTimer = ({ initialTime, onTimerEnd }: UseTimerProps) => {
     useEffect(() => {
         if (timeLeft <= 0) {
             clearInterval(intervalRef.current!);
-            if (onTimerEnd) onTimerEnd();
+            onTimerEnd();
         }
     }, [timeLeft, onTimerEnd]);
-
-   
 
     return { timeLeft, startTimer, resetTimer };
 };

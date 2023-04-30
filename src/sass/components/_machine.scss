@@ -15,6 +15,24 @@
     height: 35rem;
     box-shadow: $main-shadow;
 
+    h1 {
+        @extend %flex-center;
+        font-size: 28px;
+        font-weight: bold;
+        text-align: center;
+        color: $main-black;
+        background-color: $main-white;
+        border: 1px solid $border-color;
+        gap: 10px;
+        padding: 8px;
+        border-radius: 8px;
+
+        &.red-label {
+            color: red;
+            @extend %blink;
+        }
+    }
+
     @include mobileMax {
         width: 100%;
         margin-right: 0;
@@ -64,7 +82,7 @@
                 justify-content: center;
                 align-items: center;
                 background-color: rgba(255, 255, 255, 0.9);
-                color: #000;
+                color: $main-black;
                 font-size: 16px;
                 font-weight: bold;
             }
