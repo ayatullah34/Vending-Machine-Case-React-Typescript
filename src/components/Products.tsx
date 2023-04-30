@@ -87,17 +87,17 @@ function Products({ timeLeft = 0, startTimer = () => { }, resetTimer = () => { }
         }
     }, [timeLeft]);
 
-    // Tempature products
+    // Tempature products set to min 6°C
     useEffect(() => {
         const intervalId = setInterval(() => {
             setProductItems((prev) =>
                 prev.map((product) =>
-                    product.temperature >= 5
+                    product.temperature >= 11
                         ? { ...product, temperature: product.temperature - 5 }
                         : product
                 )
             );
-        }, 10000);
+        }, 5 * 60 * 1000);
 
         return () => clearInterval(intervalId);
     }, []);

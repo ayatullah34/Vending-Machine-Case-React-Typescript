@@ -23,5 +23,9 @@
     "place_order":"Place Order",
     "order_placed_successfully":"Order Placed Successfully!",
     "no_items_selected":"Your Cart is Empty!",
-    "user_interaction_end":"The user interaction has ended and the vending machine has been reset!"
+    "user_interaction_end":"The user interaction has ended and the vending machine has been reset!",
+    "invalid_coin":"Invalid coin",
+    "money_collected":"The money has been withdrawn from the vending machine",
+    "collected_money":"Total collected money",
+    "withdraw_cash":"Withdraw cash"
   }
