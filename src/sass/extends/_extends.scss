@@ -8,9 +8,22 @@
     height: 40%;
 }
 
-%flex-center {
+%display-flex {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+}
+
+%align-center {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+}
+
+
+%flex-center {
+    @extend %display-flex;
+    @extend %align-center;
     justify-content: center;
 }
 
@@ -32,6 +45,7 @@
 
 %blink {
     animation: blink 1s linear infinite;
+
     @keyframes blink {
         0% {
             opacity: 1;

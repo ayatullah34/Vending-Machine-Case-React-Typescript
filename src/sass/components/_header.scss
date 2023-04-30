@@ -1,12 +1,8 @@
 @import '../variables/index';
 
 .header {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
+    @extend %display-flex;
+    @extend %align-center;
     background-color: $main-blue;
     -webkit-box-shadow: $main-shadow;
     box-shadow: $main-shadow;

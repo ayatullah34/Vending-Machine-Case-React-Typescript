@@ -11,9 +11,19 @@
   height: 40%;
 }
 
-.cash-container_div_collect-money .input-wrapper, .cash-container_div_total, .cash-container_div_total-coin, .vending-machine-container h1, .cash-container_div_action_complete, .cash-container_div_action_cancel {
+.header, .cash-container_div_collect-money .input-wrapper, .cash-container_div_total, .cash-container_div_total-coin, .vending-machine-container h1, .cash-container_div_action_complete, .cash-container_div_action_cancel {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+}
+
+.header, .cash-container_div_collect-money .input-wrapper, .cash-container_div_total, .cash-container_div_total-coin, .vending-machine-container h1, .cash-container_div_action_complete, .cash-container_div_action_cancel {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+}
+
+.cash-container_div_collect-money .input-wrapper, .cash-container_div_total, .cash-container_div_total-coin, .vending-machine-container h1, .cash-container_div_action_complete, .cash-container_div_action_cancel {
   justify-content: center;
 }
 
@@ -47,12 +57,6 @@
 }
 
 .header {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   background-color: rgb(25, 118, 210);
   -webkit-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
