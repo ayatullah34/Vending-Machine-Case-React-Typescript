@@ -17,7 +17,7 @@ const CollectMoney: React.FC<CollectMoneyProps> = ({ totalCollected, reset }) =>
     };
 
     const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setIsPasswordValid(event.target.value === "1234"); // Change this to your desired password
+        setIsPasswordValid(event.target.value === "1234");
     };
 
     return (

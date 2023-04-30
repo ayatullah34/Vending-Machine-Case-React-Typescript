@@ -4,7 +4,6 @@ import { useDispatch, useSelector, } from "react-redux";
 import { toast } from "react-toastify";
 import { AnyAction, Dispatch } from 'redux';
 import { coins } from "../data/coins";
-import { products } from "../data/products";
 import { RootState } from "../interfaces/IRootState";
 import { TimerProps } from '../interfaces/ITimer';
 import { setCoinTotal, setResetProductItem, setSelectedProducts } from "../redux/machineSlice";
@@ -77,10 +76,9 @@ function CashContainer({ resetTimer }: TimerProps) {
         }
     };
 
-    const resetTotalMoney = ()=>{
+    const resetTotalMoney = () => {
         setTotalCollected(0)
     }
-
 
     return (
         <div className="cash-container">
@@ -116,7 +114,8 @@ function CashContainer({ resetTimer }: TimerProps) {
                         {t("place_order")}
                     </div>
                 </div>
-                <CollectMoney totalCollected={totalCollected} reset={resetTotalMoney}/>
+                {/* collect money operation for vending machine supplier. */}
+                <CollectMoney totalCollected={totalCollected} reset={resetTotalMoney} />
             </div>
         </div>
     )
