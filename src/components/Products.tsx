@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BiTimer } from 'react-icons/bi';
 import { useDispatch, useSelector } from 'react-redux';
@@ -18,6 +18,13 @@ function Products({ timeLeft = 0, startTimer = () => { }, resetTimer = () => { }
     const resetProductItem = useSelector((state: RootState) => state.machine.resetProductItem)
     const selectedProducts = useSelector((state: RootState) => state.machine.selectedProducts)
     const [isAlmostZero, setIsAlmostZero] = useState<boolean>(false);
+    
+    //The cooling system is turned off when a product is selected for energy efficiency and the light is turned on
+    const coolingActive = useMemo(() => {
+        const isActive = !(selectedProducts.length > 0);
+        return isActive;
+    }, [selectedProducts]);
+
 
     const handleProductClick = (item: Product) => {
         const selectedProductIndex = selectedProducts.findIndex(
@@ -106,9 +113,13 @@ function Products({ timeLeft = 0, startTimer = () => { }, resetTimer = () => { }
         setProductItems(products);
     }, [resetProductItem])
 
+
     return (
         <div className="vending-machine-container">
-            <h1 className={isAlmostZero ? "red-label" : ""}><BiTimer /> {timeLeft && formatTime(timeLeft)}</h1>
+            <h1 className={isAlmostZero ? "red-label" : ""}>
+                <BiTimer />
+                {timeLeft && formatTime(timeLeft)}
+            </h1>
             <div className="items">
                 {productItems.map((item) => (
                     <div
@@ -129,6 +140,11 @@ function Products({ timeLeft = 0, startTimer = () => { }, resetTimer = () => { }
                     </div>
                 ))}
             </div>
+            <div className="leds">
+                <div className="leds_green"  />
+                <div className={`leds_blue ${coolingActive ? "" : "disabled"} `} />
+            </div>
+            {/* <Leds /> */}
         </div>)
 }
 

@@ -26,7 +26,7 @@ const CollectMoney: React.FC<CollectMoneyProps> = ({ totalCollected, reset }) =>
             <div className="input-wrapper">
                 <input
                     type="password"
-                    placeholder="Enter password"
+                    placeholder={t("enter_password") as string | undefined}
                     onChange={handlePasswordChange}
                     className={(isPasswordValid && totalCollected > 0) ? "valid" : ""}
                 />

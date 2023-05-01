@@ -41,7 +41,7 @@
   opacity: 0.6;
 }
 
-.vending-machine-container h1.red-label {
+.vending-machine-container h1.red-label, .vending-machine-container .leds_blue {
   animation: blink 1s linear infinite;
 }
 @keyframes blink {
@@ -118,6 +118,35 @@
   background-color: white;
   height: 35rem;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  position: relative;
+}
+.vending-machine-container .leds {
+  position: absolute;
+  display: flex;
+  left: 5;
+  bottom: 0;
+  margin-bottom: 10px;
+  width: 100%;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 10px;
+}
+.vending-machine-container .leds_green {
+  width: 24px;
+  height: 24px;
+  background-color: #ABFF00;
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #304701 0 -1px 9px, #89FF00 0 2px 14px;
+}
+.vending-machine-container .leds_blue {
+  width: 24px;
+  height: 24px;
+  background-color: #a8dadc;
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #457b9d 0 -1px 9px, #a8dadc 0 2px 14px;
+}
+.vending-machine-container .leds_blue.disabled {
+  animation: none;
 }
 .vending-machine-container h1 {
   margin-bottom: 5px;
@@ -349,4 +378,36 @@
   .cash-container_div_collect-money .input-wrapper button.btn-collect-money {
     margin-left: 0;
   }
+}
+
+.tooltip-wrapper {
+  display: inline-block;
+  position: relative;
+}
+.tooltip-wrapper .tooltip-container {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  background-color: #222;
+  color: #fff;
+  border-radius: 3px;
+  padding: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+.tooltip-wrapper .tooltip-container .tooltip-arrow {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-top: 10px solid #222;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+}
+.tooltip-wrapper .tooltip-container .tooltip-content {
+  font-size: 12px;
+}
+.tooltip-wrapper .tooltip-child {
+  cursor: pointer;
 }

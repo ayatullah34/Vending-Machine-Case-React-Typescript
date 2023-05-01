@@ -1,0 +1,36 @@
+.tooltip-wrapper {
+    display: inline-block;
+    position: relative;
+  
+    .tooltip-container {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+      background-color: #222;
+      color: #fff;
+      border-radius: 3px;
+      padding: 5px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  
+      .tooltip-arrow {
+        position: absolute;
+        top: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-top: 10px solid #222;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+      }
+  
+      .tooltip-content {
+        font-size: 12px;
+      }
+    }
+  
+    .tooltip-child {
+      cursor: pointer;
+    }
+  }
+  

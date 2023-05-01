@@ -26,5 +26,6 @@
     "invalid_coin":"Coin geçerli değildir",
     "money_collected":"Tüm para otomattan çekildi",
     "collected_money":"Toplanan para",
-    "withdraw_cash":"Para çek"
+    "withdraw_cash":"Para çek",
+    "enter_password":"Şifreyi girin"
 }
