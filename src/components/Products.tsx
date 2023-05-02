@@ -4,12 +4,13 @@ import { BiTimer } from 'react-icons/bi';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { AnyAction, Dispatch } from 'redux';
+import { formatTime } from '../constant/commonFunc';
+import { RESET_TIME_IN_MS, products } from '../data/products';
 import { Product } from '../interfaces/IProduct';
 import { RootState } from '../interfaces/IRootState';
-import { setCoinTotal, setSelectedProducts } from '../redux/machineSlice';
-import { formatTime } from '../constant/commonFunc';
 import { TimerProps } from '../interfaces/ITimer';
-import { RESET_TIME_IN_MS, products } from '../data/products';
+import { setCoinTotal, setSelectedProducts } from '../redux/machineSlice';
+import Leds from './Leds';
 
 function Products({ timeLeft = 0, startTimer = () => { }, resetTimer = () => { } }: TimerProps) {
     const dispatch: Dispatch<AnyAction> = useDispatch();
@@ -18,7 +19,7 @@ function Products({ timeLeft = 0, startTimer = () => { }, resetTimer = () => { }
     const resetProductItem = useSelector((state: RootState) => state.machine.resetProductItem)
     const selectedProducts = useSelector((state: RootState) => state.machine.selectedProducts)
     const [isAlmostZero, setIsAlmostZero] = useState<boolean>(false);
-    
+
     //The cooling system is turned off when a product is selected for energy efficiency and the light is turned on
     const coolingActive = useMemo(() => {
         const isActive = !(selectedProducts.length > 0);
@@ -96,18 +97,21 @@ function Products({ timeLeft = 0, startTimer = () => { }, resetTimer = () => { }
 
     // Tempature products set to min 6°C
     useEffect(() => {
-        const intervalId = setInterval(() => {
-            setProductItems((prev) =>
-                prev.map((product) =>
-                    product.temperature >= 11
-                        ? { ...product, temperature: product.temperature - 5 }
-                        : product
-                )
-            );
-        }, 5 * 60 * 1000);
+        let intervalId: NodeJS.Timeout;
+        if (coolingActive) {
+            intervalId = setInterval(() => {
+                setProductItems((prev) =>
+                    prev.map((product) =>
+                        product.temperature >= 11
+                            ? { ...product, temperature: product.temperature - 5 }
+                            : product
+                    )
+                );
+            }, 1 * 60 * 1000);
+        }
 
         return () => clearInterval(intervalId);
-    }, []);
+    }, [coolingActive]);
 
     useEffect(() => {
         setProductItems(products);
@@ -140,11 +144,8 @@ function Products({ timeLeft = 0, startTimer = () => { }, resetTimer = () => { }
                     </div>
                 ))}
             </div>
-            <div className="leds">
-                <div className="leds_green"  />
-                <div className={`leds_blue ${coolingActive ? "" : "disabled"} `} />
-            </div>
-            {/* <Leds /> */}
+
+            <Leds coolingActive={coolingActive} />
         </div>)
 }
 

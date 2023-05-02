@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { products } from "../data/products";
 import { Product } from "../interfaces/IProduct";
 
 const machineSlice = createSlice({

@@ -1,33 +1,20 @@
 import React, { useState } from "react";
-const ReactTooltip = require("react-tooltip").default;
+import Tooltip from "../utilities/Tooltip";
+import { useTranslation } from "react-i18next";
 
-interface LedsProps { }
+interface LedsProps { coolingActive: Boolean }
 
-const Leds: React.FC<LedsProps> = () => {
-    const [activeLed, setActiveLed] = useState<"light" | "cooling">();
+const Leds: React.FC<LedsProps> = ({ coolingActive }) => {
+    const { t } = useTranslation();
 
     return (
         <div className="leds">
-            <div
-                data-tip="Işık Açık"
-                onMouseOver={() => setActiveLed("light")}
-                onMouseOut={() => setActiveLed(undefined)}
-            >
-                <ReactTooltip globalEventOff="click" place="bottom" effect="solid" delayHide={100} />
-                <div
-                    className={`leds_green ${activeLed === "light" ? "active" : ""}`}
-                />
-            </div>
-            <div
-                data-tip="Soğutma Aktif"
-                onMouseOver={() => setActiveLed("cooling")}
-                onMouseOut={() => setActiveLed(undefined)}
-            >
-                <ReactTooltip globalEventOff="click" place="bottom" effect="solid" delayHide={100} />
-                <div
-                    className={`leds_blue ${activeLed === "cooling" ? "active" : ""}`}
-                />
-            </div>
+            <Tooltip content={t('lighting_active')} position="right">
+                <div className="leds_green" />
+            </Tooltip>
+            <Tooltip content={coolingActive ? t('cooling_on') : t('cooling_off')} position="left">
+                <div className={`leds_blue ${coolingActive ? "" : "disabled"} `} />
+            </Tooltip>
         </div>
     );
 };

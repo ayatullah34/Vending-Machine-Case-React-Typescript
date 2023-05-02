@@ -16,39 +16,6 @@
     box-shadow: $main-shadow;
     position: relative;
 
-    .leds {
-        position: absolute;
-        display: flex;
-        left: 5;
-        bottom: 0;
-        margin-bottom: 10px;
-        width: 100%;
-        flex-direction: row;
-        justify-content: flex-start;
-        gap: 10px;
-
-        &_green {
-            width: 24px;
-            height: 24px;
-            background-color: #ABFF00;
-            border-radius: 50%;
-            box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #304701 0 -1px 9px, #89FF00 0 2px 14px;
-        }
-
-        &_blue {
-            width: 24px;
-            height: 24px;
-            background-color: $blue30;
-            border-radius: 50%;
-            @extend %blink;
-            box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset $blue40 0 -1px 9px, $blue30 0 2px 14px;
-
-            &.disabled {
-                animation: none;
-            }
-        }
-    }
-
     h1 {
         @extend %flex-center;
         margin-bottom: 5px;

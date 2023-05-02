@@ -27,5 +27,8 @@
     "money_collected":"Tüm para otomattan çekildi",
     "collected_money":"Toplanan para",
     "withdraw_cash":"Para çek",
-    "enter_password":"Şifreyi girin"
+    "enter_password":"Şifreyi girin",
+    "lighting_active":"Işıklandırma aktif",
+    "cooling_on":"Soğutma açık",
+    "cooling_off":"Soğutma kapalı"
 }

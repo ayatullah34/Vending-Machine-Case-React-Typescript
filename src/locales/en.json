@@ -28,5 +28,9 @@
     "money_collected":"The money has been withdrawn from the vending machine",
     "collected_money":"Total collected money",
     "withdraw_cash":"Withdraw cash",
-    "enter_password":"Enter password"
+    "enter_password":"Enter password",
+    "lighting_active":"Lighting is active",
+    "cooling_on":"Cooling on",
+    "cooling_off":"Cooling off"
+
   }

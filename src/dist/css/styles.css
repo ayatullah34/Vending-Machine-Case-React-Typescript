@@ -41,7 +41,7 @@
   opacity: 0.6;
 }
 
-.vending-machine-container h1.red-label, .vending-machine-container .leds_blue {
+.leds_blue, .vending-machine-container h1.red-label {
   animation: blink 1s linear infinite;
 }
 @keyframes blink {
@@ -119,34 +119,6 @@
   height: 35rem;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
   position: relative;
-}
-.vending-machine-container .leds {
-  position: absolute;
-  display: flex;
-  left: 5;
-  bottom: 0;
-  margin-bottom: 10px;
-  width: 100%;
-  flex-direction: row;
-  justify-content: flex-start;
-  gap: 10px;
-}
-.vending-machine-container .leds_green {
-  width: 24px;
-  height: 24px;
-  background-color: #ABFF00;
-  border-radius: 50%;
-  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #304701 0 -1px 9px, #89FF00 0 2px 14px;
-}
-.vending-machine-container .leds_blue {
-  width: 24px;
-  height: 24px;
-  background-color: #a8dadc;
-  border-radius: 50%;
-  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #457b9d 0 -1px 9px, #a8dadc 0 2px 14px;
-}
-.vending-machine-container .leds_blue.disabled {
-  animation: none;
 }
 .vending-machine-container h1 {
   margin-bottom: 5px;
@@ -380,34 +352,106 @@
   }
 }
 
-.tooltip-wrapper {
-  display: inline-block;
+.tooltip-container {
   position: relative;
 }
-.tooltip-wrapper .tooltip-container {
+.tooltip-container .tooltip {
   position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 0.25rem;
+  z-index: 1;
+  white-space: nowrap;
+  pointer-events: none;
+  transition: opacity 0.2s ease-in-out;
+  opacity: 0;
+}
+.tooltip-container .tooltip::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-width: 0.5rem;
+  border-style: solid;
+  border-color: transparent;
+  z-index: -1;
+}
+.tooltip-container .tooltip.top {
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.tooltip-container .tooltip.top::before {
   top: 100%;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 1;
-  background-color: #222;
-  color: #fff;
-  border-radius: 3px;
-  padding: 5px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  border-top-color: #000;
 }
-.tooltip-wrapper .tooltip-container .tooltip-arrow {
-  position: absolute;
-  top: -10px;
+.tooltip-container .tooltip.right {
+  top: 50%;
+  left: 100%;
+  transform: translateY(-50%);
+}
+.tooltip-container .tooltip.right::before {
+  top: 50%;
+  right: 100%;
+  transform: translateY(-50%);
+  border-right-color: #000;
+}
+.tooltip-container .tooltip.bottom {
+  top: 100%;
   left: 50%;
   transform: translateX(-50%);
-  border-top: 10px solid #222;
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
 }
-.tooltip-wrapper .tooltip-container .tooltip-content {
-  font-size: 12px;
+.tooltip-container .tooltip.bottom::before {
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-bottom-color: #000;
 }
-.tooltip-wrapper .tooltip-child {
-  cursor: pointer;
+.tooltip-container .tooltip.left {
+  top: 50%;
+  right: 100%;
+  transform: translateY(-50%);
+}
+.tooltip-container .tooltip.left::before {
+  top: 50%;
+  left: 100%;
+  transform: translateY(-50%);
+  border-left-color: #000;
+}
+.tooltip-container:hover .tooltip {
+  opacity: 1;
+}
+
+.leds {
+  position: absolute;
+  display: flex;
+  left: 5;
+  bottom: 0;
+  margin-bottom: 10px;
+  width: 100%;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 10px;
+}
+.leds_green {
+  width: 24px;
+  height: 24px;
+  background-color: #ABFF00;
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #304701 0 -1px 9px, #89FF00 0 2px 14px;
+}
+.leds_blue {
+  width: 24px;
+  height: 24px;
+  background-color: #a8dadc;
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #457b9d 0 -1px 9px, #a8dadc 0 2px 14px;
+}
+.leds_blue.disabled {
+  animation: none;
 }
