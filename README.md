@@ -6,9 +6,36 @@ There is a password field to withdraw all the accumulated coins from the machine
 
 The machine has an energy efficiency system, which includes lighting, cooling, and a robot that consumes 2 units of energy each. The total energy consumption is limited to 5 units, so the cooling system will be disabled when a product is selected, and the lighting and robot will be activated. If the robot is disabled, the cooling system will be activated to keep the products at 6°C.
 
-There is a cancel button that allows users to cancel their transactions and receive a refund. A selected product can be canceled by clicking on it again, but once a product is canceled, it cannot be selected again. The application supports both Turkish and English languages, and the language can be changed by clicking on the flag icon in the header. There are custom tooltip messages displayed when hovering over elements such as lighting and buttons, and toast messages are displayed using the react-toastify library to provide users with information. The application was developed using React, TypeScript, and Sass,to instantly convert SCSS files to CSS, Gulp was used,
-Jest was used for unit testing and was deployed using Netlify. You can view the live application using this URL: 'https://elaborate-cat-95dd4d.netlify.app/'.
+There is a cancel button that allows users to cancel their transactions and receive a refund. A selected product can be canceled by clicking on it again, but once a product is canceled, it cannot be selected again. The application supports both Turkish and English languages with `i18n`, and the language can be changed by clicking on the flag icon in the header. There are `custom tooltip` messages displayed when hovering over elements such as lighting and buttons, and toast messages are displayed using the `react-toastify` library to provide users with information. The application was developed using `React`, `TypeScript`, and `Sass`,to instantly convert SCSS files to CSS, `Gulp` was used,
+`Jest` was used for unit testing and was deployed using `Netlify`. You can view the live application using this URL: `https://elaborate-cat-95dd4d.netlify.app/`.
 
+## Structure
+* The folder named `__test__` contains unit tests related to the application. 
+<br>
+* The `public/assets` folder contains SVG images, and the '/products' folder contains images of products that can be automatically selected. 
+<br>
+* Under the `src` folder, there is a `components` folder that includes all the folders used in the application. 
+<br>
+* The `src/constant` folder contains common functions used in the application. 
+<br>
+* The `src/dist` folder contains a `styles.css` file that holds all the CSS files converted from SCSS. 
+<br>
+* The `src/hooks` folder includes a custom hook used for the timer. 
+<br>
+* The `src/interfaces` folder contains files for all the interfaces related to the components. 
+<br>
+* The `src/locales` folder contains `en.json` and `tr.json` files for language support translations. 
+<br>
+* Under the `src/redux` folder, there is a store definition necessary for Redux and a `machineSlice` file. 
+<br>
+* The `src/sass` folder includes SCSS files divided into folders written with SASS. 
+<br>
+* The `src/utilities` folder contains a custom `Tooltip` file that can be customized and used throughout the application. 
+<br>
+* Additionally, the `index` file is located under the `src` folder and serves as the main file with configuration for i18n. 
+<br>
+* Also, configuration files such as `jest.config.js`, `babel.config.js`, `gulp.js`, and `webpack.config.js` are stored in the root directory. 
+<br>
 
 ## Available Scripts
 
