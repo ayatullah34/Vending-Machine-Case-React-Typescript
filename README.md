@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# Getting Started with Vending-Machine-App
 
 Coins with values of $1, $5, $10, and $20 are accepted in the vending machine application, and the value and weight of the coins placed in the machine are checked for security reasons. Multiple products can be selected from the machine, but the place order button will only be activated if enough coins are inserted to cover the total price of the products. Each user is given a time limit of 5 minutes to complete their transactions. If the transaction is not completed within this time frame, all transactions will be canceled.
 
