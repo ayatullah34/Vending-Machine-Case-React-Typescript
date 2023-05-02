@@ -1,6 +1,9 @@
+$green-led: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #304701 0 -1px 9px, #89FF00 0 2px 14px;
+$blue-led: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset $blue40 0 -1px 9px, $blue30 0 2px 14px;
+
 .leds {
     position: absolute;
-    display: flex;
+    @extend %display-flex;
     left: 5;
     bottom: 0;
     margin-bottom: 10px;
@@ -14,7 +17,7 @@
         height: 24px;
         background-color: #ABFF00;
         border-radius: 50%;
-        box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #304701 0 -1px 9px, #89FF00 0 2px 14px;
+        @include box-shadow($green-led);
     }
 
     &_blue {
@@ -23,7 +26,7 @@
         background-color: $blue30;
         border-radius: 50%;
         @extend %blink;
-        box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset $blue40 0 -1px 9px, $blue30 0 2px 14px;
+        @include box-shadow($blue-led);
 
         &.disabled {
             animation: none;

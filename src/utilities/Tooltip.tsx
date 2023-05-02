@@ -11,14 +11,16 @@ interface TooltipProps {
 const Tooltip: React.FC<TooltipProps> = ({
   children,
   content,
-  backgroundColor = "#000",
+  backgroundColor = "#404040",
   color = "#fff",
   position = "top",
 }) => {
   const [visible, setVisible] = useState(false);
 
   const handleMouseEnter = () => {
-    setVisible(true);
+    if(content.length>0){
+      setVisible(true);
+    }
   };
 
   const handleMouseLeave = () => {

@@ -11,19 +11,24 @@
   height: 40%;
 }
 
-.header, .cash-container_div_collect-money .input-wrapper, .cash-container_div_total, .cash-container_div_total-coin, .vending-machine-container h1, .cash-container_div_action_complete, .cash-container_div_action_cancel {
+.leds, .cash-container_div_action, .cash-container_div, .app-container, .header__language, .header, .cash-container_div_collect-money .input-wrapper, .cash-container_div_total, .cash-container_div_total-coin, .vending-machine-container .items_box.disabled:hover:after, .vending-machine-container h1, .cash-container_div_action_complete, .cash-container_div_action_cancel {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.header, .cash-container_div_collect-money .input-wrapper, .cash-container_div_total, .cash-container_div_total-coin, .vending-machine-container h1, .cash-container_div_action_complete, .cash-container_div_action_cancel {
+.app-container {
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.cash-container_div, .header__language, .header, .cash-container_div_collect-money .input-wrapper, .cash-container_div_total, .cash-container_div_total-coin, .vending-machine-container .items_box.disabled:hover:after, .vending-machine-container h1, .cash-container_div_action_complete, .cash-container_div_action_cancel {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
 }
 
-.cash-container_div_collect-money .input-wrapper, .cash-container_div_total, .cash-container_div_total-coin, .vending-machine-container h1, .cash-container_div_action_complete, .cash-container_div_action_cancel {
+.cash-container_div_collect-money .input-wrapper, .cash-container_div_total, .cash-container_div_total-coin, .vending-machine-container .items_box.disabled:hover:after, .vending-machine-container h1, .cash-container_div_action_complete, .cash-container_div_action_cancel {
   justify-content: center;
 }
 
@@ -83,8 +88,6 @@
 }
 .header__language {
   margin-left: auto;
-  display: flex;
-  align-items: center;
 }
 .header__language-btn {
   background: none;
@@ -105,8 +108,6 @@
 .app-container {
   max-width: 1200px;
   margin: 24px auto;
-  display: flex;
-  flex-wrap: wrap;
   padding: 0 24px;
 }
 
@@ -117,7 +118,9 @@
   padding: 16px;
   background-color: white;
   height: 35rem;
+  -webkit-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
   position: relative;
 }
 .vending-machine-container h1 {
@@ -150,14 +153,18 @@
   max-height: 25rem;
 }
 .vending-machine-container .items_box {
+  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   width: 120px;
   padding: 40px;
   margin: 10px;
   cursor: pointer;
 }
 .vending-machine-container .items_box:hover {
+  -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 .vending-machine-container .items_box img {
   height: 2rem;
@@ -176,9 +183,6 @@
   left: 0;
   width: 100%;
   height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background-color: rgba(255, 255, 255, 0.9);
   color: #404040;
   font-size: 16px;
@@ -191,7 +195,9 @@
   padding: 16px;
   background-color: white;
   height: 35rem;
+  -webkit-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
 }
 @media only screen and (max-width: 768px) {
   .cash-container {
@@ -222,11 +228,9 @@
 .cash-container_div {
   height: 70%;
   width: 100%;
-  display: flex;
   flex-direction: column;
   margin: 0 auto;
   justify-content: space-evenly;
-  align-items: center;
 }
 @media only screen and (max-width: 768px) {
   .cash-container_div {
@@ -261,7 +265,6 @@
 }
 .cash-container_div_action {
   width: 100%;
-  display: flex;
   flex-direction: row;
   justify-content: space-between;
   gap: 10px;
@@ -364,10 +367,17 @@
   font-size: 1rem;
   border-radius: 0.25rem;
   z-index: 1;
-  white-space: nowrap;
+  width: 10rem;
+  word-break: keep-all;
   pointer-events: none;
   transition: opacity 0.2s ease-in-out;
   opacity: 0;
+}
+@media only screen and (max-width: 768px) {
+  .tooltip-container .tooltip {
+    position: absolute;
+    left: 0;
+  }
 }
 .tooltip-container .tooltip::before {
   content: "";
@@ -421,7 +431,7 @@
   top: 50%;
   left: 100%;
   transform: translateY(-50%);
-  border-left-color: #000;
+  border-left-color: #404040;
 }
 .tooltip-container:hover .tooltip {
   opacity: 1;
@@ -429,7 +439,6 @@
 
 .leds {
   position: absolute;
-  display: flex;
   left: 5;
   bottom: 0;
   margin-bottom: 10px;
@@ -443,14 +452,18 @@
   height: 24px;
   background-color: #ABFF00;
   border-radius: 50%;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #304701 0 -1px 9px, #89FF00 0 2px 14px;
   box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #304701 0 -1px 9px, #89FF00 0 2px 14px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #304701 0 -1px 9px, #89FF00 0 2px 14px;
 }
 .leds_blue {
   width: 24px;
   height: 24px;
   background-color: #a8dadc;
   border-radius: 50%;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #457b9d 0 -1px 9px, #a8dadc 0 2px 14px;
   box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #457b9d 0 -1px 9px, #a8dadc 0 2px 14px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #457b9d 0 -1px 9px, #a8dadc 0 2px 14px;
 }
 .leds_blue.disabled {
   animation: none;

@@ -1,8 +1,8 @@
 .app-container {
     max-width: 1200px;
     margin: 24px auto;
-    display: flex;
-    flex-wrap: wrap;
+    @extend %display-flex;
+    @extend %flex-wrap;
     padding: 0 24px;
 }
 
@@ -13,7 +13,7 @@
     padding: 16px;
     background-color: $main-white;
     height: 35rem;
-    box-shadow: $main-shadow;
+    @include box-shadow($main-shadow);
     position: relative;
 
     h1 {
@@ -51,14 +51,14 @@
 
         &_box {
             @extend %items;
-            box-shadow: $item-shadow;
+            @include box-shadow($item-shadow);
             width: 120px;
             padding: 40px;
             margin: 10px;
             cursor: pointer;
 
             &:hover {
-                box-shadow: $item-hover;
+                @include box-shadow($item-hover);
             }
 
             img {
@@ -81,9 +81,7 @@
                 left: 0;
                 width: 100%;
                 height: 100%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
+                @extend %flex-center;
                 background-color: rgba(255, 255, 255, 0.9);
                 color: $main-black;
                 font-size: 16px;

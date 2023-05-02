@@ -9,7 +9,7 @@ const Leds: React.FC<LedsProps> = ({ coolingActive }) => {
 
     return (
         <div className="leds">
-            <Tooltip content={t('lighting_active')} position="right">
+            <Tooltip content={t('lighting_active')} position="left">
                 <div className="leds_green" />
             </Tooltip>
             <Tooltip content={coolingActive ? t('cooling_on') : t('cooling_off')} position="left">

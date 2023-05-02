@@ -10,11 +10,17 @@
     font-size: 1rem;
     border-radius: 0.25rem;
     z-index: 1;
-    white-space: nowrap;
+    width: 10rem;
+    word-break: keep-all;
     pointer-events: none;
     transition: opacity 0.2s ease-in-out;
     opacity: 0;
-    
+
+    @include mobileMax {
+      position: absolute;
+      left: 0;
+    }
+
     &::before {
       content: "";
       position: absolute;
@@ -25,12 +31,12 @@
       border-color: transparent;
       z-index: -1;
     }
-    
+
     &.top {
       bottom: 100%;
       left: 50%;
       transform: translateX(-50%);
-      
+
       &::before {
         top: 100%;
         left: 50%;
@@ -38,12 +44,12 @@
         border-top-color: #000;
       }
     }
-    
+
     &.right {
       top: 50%;
       left: 100%;
       transform: translateY(-50%);
-      
+
       &::before {
         top: 50%;
         right: 100%;
@@ -51,12 +57,12 @@
         border-right-color: #000;
       }
     }
-    
+
     &.bottom {
       top: 100%;
       left: 50%;
       transform: translateX(-50%);
-      
+
       &::before {
         bottom: 100%;
         left: 50%;
@@ -64,19 +70,20 @@
         border-bottom-color: #000;
       }
     }
-    
+
     &.left {
       top: 50%;
       right: 100%;
       transform: translateY(-50%);
-      
+
       &::before {
         top: 50%;
         left: 100%;
         transform: translateY(-50%);
-        border-left-color: #000;
+        border-left-color: $main-black;
       }
     }
+    
   }
 
   &:hover .tooltip {

@@ -30,5 +30,6 @@
     "enter_password":"Şifreyi girin",
     "lighting_active":"Işıklandırma aktif",
     "cooling_on":"Soğutma açık",
-    "cooling_off":"Soğutma kapalı"
+    "cooling_off":"Soğutma kapalı",
+    "withdraw_money_info":"Para çekebilmek için girilen şifrenin doğru olması ve toplanan paranın $0 dolardan büyük olması gerekmektedir."
 }

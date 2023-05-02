@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { CollectMoneyProps } from "../interfaces/ICollectedMoney";
 import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
+import Tooltip from "../utilities/Tooltip";
 
 const CollectMoney: React.FC<CollectMoneyProps> = ({ totalCollected, reset }) => {
     const { t } = useTranslation();
@@ -30,13 +31,19 @@ const CollectMoney: React.FC<CollectMoneyProps> = ({ totalCollected, reset }) =>
                     onChange={handlePasswordChange}
                     className={(isPasswordValid && totalCollected > 0) ? "valid" : ""}
                 />
-                <button
-                    className={`btn-collect-money ${(isPasswordValid && totalCollected > 0) ? "" : "disabled"}`}
-                    onClick={handleCollectMoneyClick}
-                    disabled={!isPasswordValid}
-                >
-                    {t("withdraw_cash")}
-                </button>
+                <Tooltip
+                    content={(isPasswordValid && totalCollected > 0)
+                        ? ""
+                        : t('withdraw_money_info')}
+                    position="right">
+                    <button
+                        className={`btn-collect-money ${(isPasswordValid && totalCollected > 0) ? "" : "disabled"}`}
+                        onClick={handleCollectMoneyClick}
+                        disabled={!isPasswordValid}
+                    >
+                        {t("withdraw_cash")}
+                    </button>
+                </Tooltip>
             </div>
         </div>
     );

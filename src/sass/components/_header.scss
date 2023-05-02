@@ -31,8 +31,8 @@
 
     &__language {
         margin-left: auto;
-        display: flex;
-        align-items: center;
+        @extend %display-flex;
+        @extend %align-center;
 
         &-btn {
             background: none;
