@@ -9,6 +9,7 @@ The machine has an energy efficiency system, which includes lighting, cooling, a
 There is a cancel button that allows users to cancel their transactions and receive a refund. A selected product can be canceled by clicking on it again, but once a product is canceled, it cannot be selected again. The application supports both Turkish and English languages, and the language can be changed by clicking on the flag icon in the header. There are custom tooltip messages displayed when hovering over elements such as lighting and buttons, and toast messages are displayed using the react-toastify library to provide users with information. The application was developed using React, TypeScript, and Sass,to instantly convert SCSS files to CSS, Gulp was used,
 Jest was used for unit testing and was deployed using Netlify. You can view the live application using this URL: 'https://elaborate-cat-95dd4d.netlify.app/'.
 
+
 ## Available Scripts
 
 In the project directory, you can run:
