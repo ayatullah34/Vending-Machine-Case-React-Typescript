@@ -1,7 +1,7 @@
 import "@testing-library/jest-dom/extend-expect";
 import React from "react";
 import CashContainer from '../src/components/CashContainer';
-import { render, fireEvent, screen } from '@testing-library/react';
+import { render, fireEvent, screen, waitFor } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
@@ -71,11 +71,13 @@ describe('CashContainer OTHER TEST', () => {
             </Provider>
         );
         const cancelButton = screen.getByText(/cancel/i);
-        fireEvent.click(cancelButton); // test için cancel butonuna tıklandı
-        await expect(store.getActions()).toEqual([
-            { type: 'machine/setSelectedProducts', payload: [] },
-            { type: 'machine/setCoinTotal', payload: 0 },
-            { type: 'machine/setResetProductItem', payload: new Date().toISOString() }]);
+        fireEvent.click(cancelButton);
+        await waitFor(() => {
+            expect(store.getActions()).toEqual([
+                { type: 'machine/setSelectedProducts', payload: [] },
+                { type: 'machine/setCoinTotal', payload: 0 },
+                { type: 'machine/setResetProductItem', payload: expect.any(String) }]);
+        })
     });
 
 })
