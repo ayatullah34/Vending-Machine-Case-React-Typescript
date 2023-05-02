@@ -22,6 +22,14 @@
     "place_order":"Sipariş Ver",
     "order_placed_successfully":"Sipariş Başarıyla Verildi!",
     "no_items_selected":"Sepetiniz Boş!",
-    "user_interaction_end":"Kullanıcı etkileşimi sona erdi ve otomat sıfırlandı!"
-    
+    "user_interaction_end":"Kullanıcı etkileşimi sona erdi ve otomat sıfırlandı!",
+    "invalid_coin":"Coin geçerli değildir",
+    "money_collected":"Tüm para otomattan çekildi",
+    "collected_money":"Toplanan para",
+    "withdraw_cash":"Para çek",
+    "enter_password":"Şifreyi girin",
+    "lighting_active":"Işıklandırma aktif",
+    "cooling_on":"Soğutma açık",
+    "cooling_off":"Soğutma kapalı",
+    "withdraw_money_info":"Para çekebilmek için girilen şifrenin doğru olması ve toplanan paranın $0 dolardan büyük olması gerekmektedir."
 }

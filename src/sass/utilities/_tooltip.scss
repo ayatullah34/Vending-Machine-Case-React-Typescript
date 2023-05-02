@@ -1,0 +1,92 @@
+.tooltip-container {
+  position: relative;
+
+  .tooltip {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border-radius: 0.25rem;
+    z-index: 1;
+    width: 10rem;
+    word-break: keep-all;
+    pointer-events: none;
+    transition: opacity 0.2s ease-in-out;
+    opacity: 0;
+
+    @include mobileMax {
+      position: absolute;
+      left: 0;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-width: 0.5rem;
+      border-style: solid;
+      border-color: transparent;
+      z-index: -1;
+    }
+
+    &.top {
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+
+      &::before {
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        border-top-color: #000;
+      }
+    }
+
+    &.right {
+      top: 50%;
+      left: 100%;
+      transform: translateY(-50%);
+
+      &::before {
+        top: 50%;
+        right: 100%;
+        transform: translateY(-50%);
+        border-right-color: #000;
+      }
+    }
+
+    &.bottom {
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+
+      &::before {
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        border-bottom-color: #000;
+      }
+    }
+
+    &.left {
+      top: 50%;
+      right: 100%;
+      transform: translateY(-50%);
+
+      &::before {
+        top: 50%;
+        left: 100%;
+        transform: translateY(-50%);
+        border-left-color: $main-black;
+      }
+    }
+    
+  }
+
+  &:hover .tooltip {
+    opacity: 1;
+  }
+}

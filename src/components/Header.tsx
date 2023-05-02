@@ -3,14 +3,11 @@ import { useTranslation } from "react-i18next";
 
 interface HeaderProps {
     title: string;
+    changeLanguage: (lng: string) => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ title }) => {
-    const {i18n } = useTranslation();
-
-    const changeLanguage = (lng: string) => {
-        i18n.changeLanguage(lng);
-    };
+const Header: React.FC<HeaderProps> = ({ title,changeLanguage }) => {
+    const { i18n } = useTranslation();
 
     return (
         <header className="header">
@@ -22,7 +19,7 @@ const Header: React.FC<HeaderProps> = ({ title }) => {
             <h1 className="header__title">{title}</h1>
             <div className="header__language">
                 <button
-                    className="header__language-btn"
+                    className={`header__language-btn ${i18n.language === "tr" ? "selected" : ""}`}
                     onClick={() => changeLanguage("tr")}
                 >
                     <img
@@ -31,7 +28,7 @@ const Header: React.FC<HeaderProps> = ({ title }) => {
                     />
                 </button>
                 <button
-                    className="header__language-btn"
+                    className={`header__language-btn ${i18n.language === "en" ? "selected" : ""}`}
                     onClick={() => changeLanguage("en")}
                 >
                     <img

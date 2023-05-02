@@ -1,4 +1,5 @@
 export type Coin = {
-	value: number;
-  }
+  value: number;
+  weight: number;
+}
 

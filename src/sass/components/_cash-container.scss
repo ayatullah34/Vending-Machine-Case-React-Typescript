@@ -4,8 +4,7 @@
     padding: 16px;
     background-color: $main-white;
     height: 35rem;
-    box-shadow: $main-shadow;
-
+    @include box-shadow($main-shadow);
     @include mobileMax {
         width: 100%;
         height: auto;
@@ -36,13 +35,13 @@
     }
 
     &_div {
-        height: 60%;
+        height: 70%;
         width: 100%;
-        display: flex;
+        @extend %display-flex;
         flex-direction: column;
         margin: 0 auto;
         justify-content: space-evenly;
-        align-items: center;
+        @extend %align-center;
 
         @include mobileMax {
             padding: 15px
@@ -50,6 +49,7 @@
 
         &_total-coin {
             @extend %flex-center;
+            margin-top: 20px;
             justify-content: space-evenly;
             padding: 5px;
             height: 40px;
@@ -79,7 +79,7 @@
 
         &_action {
             width: 100%;
-            display: flex;
+            @extend %display-flex;
             flex-direction: row;
             justify-content: space-between;
             gap: 10px;
@@ -110,3 +110,4 @@
         }
     }
 }
+
