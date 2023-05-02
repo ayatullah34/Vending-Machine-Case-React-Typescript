@@ -39,7 +39,7 @@ const CollectMoney: React.FC<CollectMoneyProps> = ({ totalCollected, reset }) =>
                     <button
                         className={`btn-collect-money ${(isPasswordValid && totalCollected > 0) ? "" : "disabled"}`}
                         onClick={handleCollectMoneyClick}
-                        disabled={!isPasswordValid}
+                        disabled={!(isPasswordValid && totalCollected > 0)}
                     >
                         {t("withdraw_cash")}
                     </button>

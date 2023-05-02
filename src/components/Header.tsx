@@ -3,14 +3,11 @@ import { useTranslation } from "react-i18next";
 
 interface HeaderProps {
     title: string;
+    changeLanguage: (lng: string) => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ title }) => {
+const Header: React.FC<HeaderProps> = ({ title,changeLanguage }) => {
     const { i18n } = useTranslation();
-
-    const changeLanguage = (lng: string) => {
-        i18n.changeLanguage(lng);
-    };
 
     return (
         <header className="header">

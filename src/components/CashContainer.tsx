@@ -19,9 +19,9 @@ function CashContainer({ resetTimer }: TimerProps) {
     const disableOrder = useMemo(() => checkDisable(), [coinTotal, paymentTotal, selectedProducts.length]);
     const [totalCollected, setTotalCollected] = useState<number>(0)
 
-    // Determine if the inserted coin is valid
+    // Determine if the inserted coin is valid 
     const isValidCoin = (coin: Coin): boolean => {
-        // A valid coin must exist in the `coins` array with the same value as the inserted coin
+        //check coin with weight and value
         return coins.some(c => c.value === coin.value && c.weight === coin.weight);
     };
 
@@ -89,7 +89,7 @@ function CashContainer({ resetTimer }: TimerProps) {
                         key={item.weight}
                         onClick={() => handleCoinClick(item)}
                     >
-                        <div>{item.value}</div>
+                        <div data-testid='coin-option'>{item.value}</div>
                     </div>
                 ))}
             </div>
@@ -101,18 +101,19 @@ function CashContainer({ resetTimer }: TimerProps) {
                     {`${t("total")}: $${paymentTotal}`}
                 </div>
                 <div className="cash-container_div_action">
-                    <div
+                    <button
                         className="cash-container_div_action_cancel"
                         onClick={handleResetClick}
                     >
                         {t("cancel")}
-                    </div>
-                    <div
+                    </button>
+                    <button
                         className={`cash-container_div_action_complete ${disableOrder ? "disabled" : ""}`}
                         onClick={handlePaymentClick}
+                        disabled={disableOrder ? true : false}
                     >
                         {t("place_order")}
-                    </div>
+                    </button>
                 </div>
                 {/* collect money operation for vending machine supplier. */}
                 <CollectMoney totalCollected={totalCollected} reset={resetTotalMoney} />
