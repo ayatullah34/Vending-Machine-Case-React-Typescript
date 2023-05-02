@@ -11,31 +11,18 @@ There is a cancel button that allows users to cancel their transactions and rece
 
 ## Structure
 * The folder named `__test__` contains unit tests related to the application. 
-<br>
 * The `public/assets` folder contains SVG images, and the '/products' folder contains images of products that can be automatically selected. 
-<br>
 * Under the `src` folder, there is a `components` folder that includes all the folders used in the application. 
-<br>
 * The `src/constant` folder contains common functions used in the application. 
-<br>
 * The `src/dist` folder contains a `styles.css` file that holds all the CSS files converted from SCSS. 
-<br>
 * The `src/hooks` folder includes a custom hook used for the timer. 
-<br>
 * The `src/interfaces` folder contains files for all the interfaces related to the components. 
-<br>
 * The `src/locales` folder contains `en.json` and `tr.json` files for language support translations. 
-<br>
 * Under the `src/redux` folder, there is a store definition necessary for Redux and a `machineSlice` file. 
-<br>
 * The `src/sass` folder includes SCSS files divided into folders written with SASS. 
-<br>
 * The `src/utilities` folder contains a custom `Tooltip` file that can be customized and used throughout the application. 
-<br>
 * Additionally, the `index` file is located under the `src` folder and serves as the main file with configuration for i18n. 
-<br>
 * Also, configuration files such as `jest.config.js`, `babel.config.js`, `gulp.js`, and `webpack.config.js` are stored in the root directory. 
-<br>
 
 ## Available Scripts
 
@@ -79,3 +66,8 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
